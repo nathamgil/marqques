@@ -644,6 +644,7 @@
     $('#ok-ics', raiz).download = 'marqques-' + a.codigo + '.ics';
 
     irPara(5);
+    document.dispatchEvent(new CustomEvent('tv:agendado', { detail: a }));
   }
 
   // Arquivo de calendário: o cliente salva no celular e não esquece.

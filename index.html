@@ -557,8 +557,11 @@
     });
   }
 
-  function recebe(d) { pintaCardapio(d.servicos); pintaEquipe(d.barbeiros, d.servicos); }
+  var dados = null;
+  function recebe(d) { dados = d; pintaCardapio(d.servicos); pintaEquipe(d.barbeiros, d.servicos); }
   document.addEventListener('tv:dados', function (ev) { recebe(ev.detail); });
+  // marcou? a vaga some da capa e dos cards na mesma hora
+  document.addEventListener('tv:agendado', function () { if (dados) pintaEquipe(dados.barbeiros, dados.servicos); });
 })();
 </script>
 <script src="assets/agenda.js"></script>
